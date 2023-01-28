@@ -7,7 +7,7 @@ import { Login } from "./icons/Login";
 
 const Navbar = ({ authUser, onLogout }) => {
   return (
-    <div className="container py-2 fixed bottom-0 left-0 border-t border-slate-300 bg-white">
+    <nav className="container py-2 fixed bottom-0 left-0 border-t border-slate-300 bg-white min-w-full">
       <div className="w-full md:max-w-lg mx-auto">
         <ul className="flex justify-center items-center text-navy gap-8 md:gap-10">
           <Link to="/" className="text-base">
@@ -39,7 +39,7 @@ const Navbar = ({ authUser, onLogout }) => {
           )}
         </ul>
       </div>
-    </div>
+    </nav>
   );
 };
 

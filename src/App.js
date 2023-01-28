@@ -60,7 +60,7 @@ function App() {
 
   return (
     <>
-      <header>
+      <header className="">
         <Header />
       </header>
       <Loading />

@@ -88,6 +88,7 @@ const HomePage = () => {
       {authUser !== null ? (
         <Link
           to={"/new"}
+          id="tambah"
           className="fixed bottom-24 right-7 lg:right-52 xl:right-[26rem]"
         >
           <div className="border py-2 px-[.60rem] rounded-full bg-navy text-white">

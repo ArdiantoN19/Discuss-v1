@@ -19,6 +19,7 @@ const asyncRegisterUser = ({ name, email, password }) => {
     dispatch(showLoading());
     try {
       await api.register({ name, email, password });
+      window.location.href = "/login";
     } catch (error) {
       alert(error.message);
     }

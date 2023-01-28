@@ -4,7 +4,7 @@ import { showLoading, hideLoading } from "react-redux-loading-bar";
 import api from "../../utils/api";
 
 const ActionType = {
-  SET_AUTH_USER: "SET_AUTH_USER",
+  SET_AUTH_USER: "authUser/set",
   UNSET_AUTH_USER: "UNSET_AUTH_USER",
 };
 
@@ -34,6 +34,7 @@ const asyncSetAuthUser = ({ email, password }) => {
       api.putAccessToken(token);
       const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
+      window.location.href = "/";
     } catch (error) {
       alert(error.message);
     }
@@ -48,8 +49,6 @@ const asyncUnsetAuthUser = () => {
     if (confirmLogout) {
       dispatch(unsetAuthUserActionCreator());
       api.putAccessToken("");
-    } else {
-      return;
     }
     dispatch(hideLoading());
   };

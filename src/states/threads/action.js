@@ -64,17 +64,17 @@ const asyncToggleUpVote = (threadId) => {
   return async (dispatch, getState) => {
     dispatch(showLoading());
 
-    const { authUser } = getState();
+    const { authUser, threads } = getState();
     if (!authUser) {
       alert("Anda harus login dahulu!");
-    } else {
-      dispatch(toggleUpVoteActionCreator({ threadId, userId: authUser?.id }));
-      try {
-        await api.upVoteThread(threadId);
-      } catch (error) {
-        alert(error.message);
-        dispatch(toggleUpVoteActionCreator({ threadId, userId: authUser?.id }));
-      }
+      return;
+    }
+    dispatch(toggleUpVoteActionCreator({ threadId, userId: authUser?.id }));
+    try {
+      await api.upVoteThread(threadId);
+    } catch (error) {
+      alert(error.message);
+      dispatch(receiveThreadsActionCreator(threads));
     }
 
     dispatch(hideLoading());
@@ -85,20 +85,18 @@ const asyncToggleDownVote = (threadId) => {
   return async (dispatch, getState) => {
     dispatch(showLoading());
 
-    const { authUser } = getState();
+    const { authUser, threads } = getState();
     if (!authUser) {
       alert("Anda harus login terlebih dahulu!");
-    } else {
-      dispatch(toggleDownVoteActionCreator({ threadId, userId: authUser?.id }));
+      return;
+    }
+    dispatch(toggleDownVoteActionCreator({ threadId, userId: authUser?.id }));
 
-      try {
-        await api.downVoteThread(threadId);
-      } catch (error) {
-        alert(error.message);
-        dispatch(
-          toggleDownVoteActionCreator({ threadId, userId: authUser?.id })
-        );
-      }
+    try {
+      await api.downVoteThread(threadId);
+    } catch (error) {
+      alert(error.message);
+      dispatch(receiveThreadsActionCreator(threads));
     }
 
     dispatch(hideLoading());

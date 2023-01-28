@@ -30,6 +30,7 @@ const LoginInput = ({ login }) => {
       />
       <button
         type="submit"
+        name="Login"
         disabled={!(email !== "" && password !== "")}
         className="block w-1/3 mx-auto font-semibold text-base bg-navy bg-opacity-90 p-2 text-light rounded hover:bg-opacity-100"
       >

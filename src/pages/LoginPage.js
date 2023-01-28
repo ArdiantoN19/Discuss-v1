@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { asyncSetAuthUser } from "../states/authUser/action";
 import LoginInput from "../components/LoginInput";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleLogin = ({ email, password }) => {
     dispatch(
@@ -15,7 +14,6 @@ const LoginPage = () => {
         password,
       })
     );
-    navigate("/");
   };
 
   return (
