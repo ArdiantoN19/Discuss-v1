@@ -14,7 +14,7 @@ const AddPage = () => {
   };
 
   return (
-    <div className="container px-8">
+    <div className="container px-8 pt-5">
       <h1 className="text-navy text-2xl font-semibold mb-5">
         Buat diskusi baru
       </h1>
