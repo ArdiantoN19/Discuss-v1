@@ -3,10 +3,8 @@ import PropTypes, { string } from "prop-types";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import { postedAt } from "../utils";
-import { UpVote } from "./icons/UpVote";
-import { UpVoteFill } from "./icons/UpVoteFill";
-import { DownVote } from "./icons/DownVote";
-import { DownVoteFill } from "./icons/DownVoteFill";
+import ToggleUpVote from "./ToggleUpVote";
+import ToggleDownVote from "./ToggleDownVote";
 
 const ThreadItem = ({
   id,
@@ -27,12 +25,12 @@ const ThreadItem = ({
 
   const handleOnClickUpVoteThread = (e) => {
     e.stopPropagation();
-    upVote(id);
+    upVote({ id, isThreadDownVote });
   };
 
   const handleOnClickDownVoteThread = (e) => {
     e.stopPropagation();
-    downVote(id);
+    downVote({ id, isThreadUpVote });
   };
 
   return (
@@ -63,21 +61,16 @@ const ThreadItem = ({
 
       <div className="flex justify-between items-center py-2 rounded mb-1">
         <div className="flex gap-5">
-          <button
-            type="button"
-            className="flex items-center gap-1"
-            onClick={handleOnClickUpVoteThread}
-          >
-            {isThreadUpVote ? <UpVoteFill /> : <UpVote />} {upVotesBy.length}
-          </button>
-          <button
-            type="button"
-            className="flex items-center gap-1"
-            onClick={handleOnClickDownVoteThread}
-          >
-            {isThreadDownVote ? <DownVoteFill /> : <DownVote />}
-            {downVotesBy.length}
-          </button>
+          <ToggleUpVote
+            upVoteHandler={handleOnClickUpVoteThread}
+            isThreadUpVote={isThreadUpVote}
+            upVotesBy={upVotesBy}
+          />
+          <ToggleDownVote
+            downVoteHandler={handleOnClickDownVoteThread}
+            isThreadDownVote={isThreadDownVote}
+            downVotesBy={downVotesBy}
+          />
         </div>
         <p className="text-right text-sm text-secondary">
           {totalComments} Komentar

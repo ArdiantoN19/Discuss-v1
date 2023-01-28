@@ -1,16 +1,16 @@
 /**
- * Skenario test
+ * Scenario test
  *
  *  - asyncPopulateUsersAndThreads thunk function
  *   - should dispatch action correctly when data fetching success
- *   - should dispatch action and call alert correctly when data fetcing failed
+ *   - should dispatch action and call alert correctly when data fetching failed
  */
 
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import api from "../../utils/api";
-import { asyncPopulateUsersAndThreads } from "./action";
-import { receiveUsersActionCreator } from "../users/action";
-import { receiveThreadsActionCreator } from "../threads/action";
+import { asyncPopulateUsersAndThreads } from "../../states/shared/action";
+import { receiveUsersActionCreator } from "../../states/users/action";
+import { receiveThreadsActionCreator } from "../../states/threads/action";
 
 const fakeUsersResponse = [
   {

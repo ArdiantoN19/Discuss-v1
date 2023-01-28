@@ -1,5 +1,5 @@
 /**
- * Skenario test
+ * Scenario test
  *
  *  - RegisterInput component
  *   - should handle name typing correctly
@@ -11,7 +11,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import RegisterInput from "./RegisterInput";
+import RegisterInput from "../../components/RegisterInput";
 
 import "@testing-library/jest-dom";
 

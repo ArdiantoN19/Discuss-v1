@@ -9,7 +9,7 @@
  *      - sholud return the threads with the toggle downvote thread when given by TOGGLE_DOWN_THREAD action
  */
 
-import threadsReducer from "./reducer";
+import threadsReducer from "../../states/threads/reducer";
 
 describe("threadsReducer function", () => {
   it("should return the initial state when given by unknown action", () => {
@@ -135,7 +135,7 @@ describe("threadsReducer function", () => {
     expect(nextState).toEqual([
       {
         ...initialState[0],
-        upVotesBy: [action.payload.userId],
+        upVotesBy: [...initialState[0].upVotesBy, action.payload.userId],
       },
     ]);
 
@@ -177,7 +177,7 @@ describe("threadsReducer function", () => {
     expect(nextState).toEqual([
       {
         ...initialState[0],
-        downVotesBy: [action.payload.userId],
+        downVotesBy: [...initialState[0].downVotesBy, action.payload.userId],
       },
     ]);
 

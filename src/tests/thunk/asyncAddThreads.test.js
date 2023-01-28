@@ -1,14 +1,17 @@
 /**
- * Skenario test
+ * Scenario test
  *
  *  - asyncAddThread thunk function
  *   - should dispatch action correctly when data fetching success
- *   - should dispatch action and call alert correctly when data fetcing failed
+ *   - should dispatch action and call alert correctly when data fetching failed
  *
  */
 
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { asyncAddThread, addThreadActionCreator } from "./action";
+import {
+  asyncAddThread,
+  addThreadActionCreator,
+} from "../../states/threads/action";
 import api from "../../utils/api";
 
 const fakeThreadResponse = {

@@ -1,5 +1,5 @@
 /**
- * Skenario test
+ * Scenario test
  *
  *  - Login spec
  *   - should display login page correctly

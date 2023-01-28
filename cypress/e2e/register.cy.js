@@ -1,5 +1,5 @@
 /**
- * Skenario test
+ * Scenario test
  *
  *  - Register spec
  *   - should display register page correctly

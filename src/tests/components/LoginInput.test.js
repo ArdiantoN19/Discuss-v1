@@ -1,5 +1,5 @@
 /**
- * skenario testing
+ * Scenario testing
  *
  * - LoginInput component
  *   - should handle email typing correctly
@@ -10,7 +10,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import LoginInput from "./LoginInput";
+import LoginInput from "../../components/LoginInput";
 
 import "@testing-library/jest-dom";
 
