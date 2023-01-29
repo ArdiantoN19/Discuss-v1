@@ -116,7 +116,7 @@ const asyncToggleDownVote = ({ threadId, isThreadUpVote }) => {
     dispatch(toggleDownVoteActionCreator({ threadId, userId: authUser?.id }));
 
     try {
-      await api.upVoteThread(threadId);
+      await api.downVoteThread(threadId);
     } catch (error) {
       alert(error.message);
       if (isThreadUpVote) {
