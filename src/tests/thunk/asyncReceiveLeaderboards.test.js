@@ -1,16 +1,16 @@
 /**
- * Skenario test
+ * Scenario test
  *
  *  - asyncReceiveLeaderboards thunk function
  *   - should dispatch action correctly when data fetching success
- *   - should dispatch action and call alert correctly when data fetcing failed
+ *   - should dispatch action and call alert correctly when data fetching failed
  */
 
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import {
   asyncReceiveLeaderboards,
   receiveLeaderboardsActionCreator,
-} from "./action";
+} from "../../states/leaderboards/action";
 import api from "../../utils/api";
 
 const fakeLeaderboardsResponse = [
@@ -36,7 +36,7 @@ const fakeLeaderboardsResponse = [
 
 const fakeErrorResponse = new Error("Ups, something went wrong");
 
-describe("asyncLeaderboards thunk function", () => {
+describe("asyncReceiveLeaderboards thunk function", () => {
   beforeEach(() => {
     api._getLeaderboards = api.getLeaderBoards;
   });

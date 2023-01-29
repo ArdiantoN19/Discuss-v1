@@ -37,7 +37,6 @@ const AddThread = ({ addThread }) => {
       />
       <button
         type="submit"
-        name="Tambah"
         disabled={!(title !== "" && category !== "" && body !== "")}
         className="block w-full mx-auto font-semibold text-base bg-navy bg-opacity-90 p-2 text-light rounded hover:bg-opacity-100"
       >

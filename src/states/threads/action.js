@@ -5,6 +5,7 @@ const ActionType = {
   RECEIVE_THREADS: "RECEIVE_THREADS",
   ADD_THREAD: "ADD_THREAD",
   TOGGLE_UPVOTE_THREAD: "TOGGLE_UPVOTE_THREAD",
+  TOGGLE_NEUTRALVOTE_THREAD: "TOGGLE_UPVOTE_THREAD",
   TOGGLE_DOWNVOTE_THREAD: "TOGGLE_DOWNVOTE_THREAD",
 };
 
@@ -36,6 +37,16 @@ const toggleUpVoteActionCreator = ({ threadId, userId }) => {
   };
 };
 
+const toggleNeutralVoteActionCreator = ({ threadId, userId }) => {
+  return {
+    type: ActionType.TOGGLE_NEUTRALVOTE_THREAD,
+    payload: {
+      threadId,
+      userId,
+    },
+  };
+};
+
 const toggleDownVoteActionCreator = ({ threadId, userId }) => {
   return {
     type: ActionType.TOGGLE_DOWNVOTE_THREAD,
@@ -60,43 +71,62 @@ const asyncAddThread = ({ title, body, category }) => {
   };
 };
 
-const asyncToggleUpVote = (threadId) => {
+const asyncToggleUpVote = ({ threadId, isThreadDownVote }) => {
   return async (dispatch, getState) => {
     dispatch(showLoading());
 
-    const { authUser, threads } = getState();
+    const { authUser } = getState();
     if (!authUser) {
       alert("Anda harus login dahulu!");
       return;
     }
+
     dispatch(toggleUpVoteActionCreator({ threadId, userId: authUser?.id }));
+
     try {
       await api.upVoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(receiveThreadsActionCreator(threads));
+      if (isThreadDownVote) {
+        dispatch(
+          toggleDownVoteActionCreator({ threadId, userId: authUser?.id })
+        );
+        return;
+      }
+
+      dispatch(
+        toggleNeutralVoteActionCreator({ threadId, userId: authUser?.id })
+      );
     }
 
     dispatch(hideLoading());
   };
 };
 
-const asyncToggleDownVote = (threadId) => {
+const asyncToggleDownVote = ({ threadId, isThreadUpVote }) => {
   return async (dispatch, getState) => {
     dispatch(showLoading());
 
-    const { authUser, threads } = getState();
+    const { authUser } = getState();
     if (!authUser) {
-      alert("Anda harus login terlebih dahulu!");
+      alert("Anda harus login dahulu!");
       return;
     }
+
     dispatch(toggleDownVoteActionCreator({ threadId, userId: authUser?.id }));
 
     try {
-      await api.downVoteThread(threadId);
+      await api.upVoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(receiveThreadsActionCreator(threads));
+      if (isThreadUpVote) {
+        dispatch(toggleUpVoteActionCreator({ threadId, userId: authUser?.id }));
+        return;
+      }
+
+      dispatch(
+        toggleNeutralVoteActionCreator({ threadId, userId: authUser?.id })
+      );
     }
 
     dispatch(hideLoading());
@@ -109,6 +139,7 @@ export {
   addThreadActionCreator,
   toggleUpVoteActionCreator,
   toggleDownVoteActionCreator,
+  toggleNeutralVoteActionCreator,
   asyncAddThread,
   asyncToggleUpVote,
   asyncToggleDownVote,

@@ -6,7 +6,7 @@
  *      - should return the leaderboards when given by RECEIVE_LEADERBOARDS action
  */
 
-import leaderboardsReducer from "./reducer";
+import leaderboardsReducer from "../../states/leaderboards/reducer";
 
 describe("leaderboardsReducer function", () => {
   it("should return the initial state when given by unknown action", () => {

@@ -1,5 +1,5 @@
 /**
- * Skenario testing
+ * Scenario testing
  *
  *  - AddThread component
  *   - should handle title typing correctly
@@ -11,7 +11,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import AddThread from "./AddThread";
+import AddThread from "../../components/AddThread";
 
 import "@testing-library/jest-dom";
 
