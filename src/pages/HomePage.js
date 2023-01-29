@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import CategoryButton from "../components/CategoryButton";
 import { Plus } from "../components/icons/Plus";
 import ThreadList from "../components/ThreadList";
 import { asyncPopulateUsersAndThreads } from "../states/shared/action";
@@ -55,17 +56,12 @@ const HomePage = () => {
         <h2 className="text-base mb-3">Kategori popular</h2>
         <div className="flex justify-start items-center flex-wrap gap-2">
           {threadList.map((thread) => (
-            <button
-              type="button"
+            <CategoryButton
               key={thread.id}
-              className={`border border-navy py-1 px-3 rounded ${
-                category === thread.category ? "bg-secondary" : ""
-              }`}
-              onClick={({ target: { value } }) => handleOnClickCategory(value)}
-              value={thread.category}
-            >
-              #{thread.category}
-            </button>
+              category={category}
+              handleOnClickCategory={handleOnClickCategory}
+              threadCategory={thread.category}
+            />
           ))}
         </div>
       </div>
