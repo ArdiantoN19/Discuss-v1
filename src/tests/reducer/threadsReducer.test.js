@@ -124,7 +124,7 @@ describe("threadsReducer function", () => {
       type: "TOGGLE_UPVOTE_THREAD",
       payload: {
         threadId: "thread-1",
-        userId: "user-1",
+        userId: "users-1",
       },
     };
 
@@ -166,7 +166,7 @@ describe("threadsReducer function", () => {
       type: "TOGGLE_DOWNVOTE_THREAD",
       payload: {
         threadId: "thread-1",
-        userId: "user-1",
+        userId: "users-1",
       },
     };
 

@@ -3,9 +3,9 @@
  *
  *  - ToggleUpVote component
  *   - should render total upvote correctly
- *   - should render icon upvote when user haven't upvote
- *   - should render icon upvote fill when user voted
- *   - should render icon upvote when user unvoted
+ *   - should render icon upVote correctly
+ *   - should render icon upVoteFill when user voted
+ *   - should render icon upVote when user unvoted
  */
 
 import React from "react";
@@ -17,7 +17,7 @@ import ToggleUpVote from "../../components/ToggleUpVote";
 
 const toggleProps = {
   isVote: false,
-  VotesBy: ["user-1", "user-2", "user-3"],
+  VotesBy: ["users-1", "users-2", "users-3"],
 };
 
 describe("ToggleUpVote component", () => {
@@ -38,7 +38,7 @@ describe("ToggleUpVote component", () => {
     expect(toggleUpVote).toHaveTextContent(toggleProps.VotesBy.length);
   });
 
-  it("should render icon upvote when user haven't upvote ", async () => {
+  it("should render icon upVote correctly ", async () => {
     // Arrange
     render(
       <ToggleUpVote
@@ -56,7 +56,7 @@ describe("ToggleUpVote component", () => {
     expect(svgElement).toHaveAttribute("name", "upVote");
   });
 
-  it("should render icon upvote fill when user voted ", async () => {
+  it("should render icon upVoteFill when user voted ", async () => {
     const upVoteHandler = jest.fn().mockImplementation(() => {
       toggleProps.isVote = true;
     });
@@ -89,7 +89,7 @@ describe("ToggleUpVote component", () => {
     expect(svgElement).toHaveAttribute("name", "upVoteFill");
   });
 
-  it("should render icon upvote when user unvoted ", async () => {
+  it("should render icon upVote when user unvoted ", async () => {
     const upVoteHandler = jest.fn().mockImplementation(() => {
       toggleProps.isVote = false;
     });
