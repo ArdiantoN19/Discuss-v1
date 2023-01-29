@@ -11,7 +11,7 @@ const ToggleUpVote = ({ upVoteHandler, isThreadUpVote, upVotesBy }) => {
       onClick={upVoteHandler}
       title="upVote"
     >
-      {isThreadUpVote ? <UpVoteFill /> : null} {upVotesBy.length}
+      {isThreadUpVote ? <UpVoteFill /> : <UpVote />} {upVotesBy.length}
     </button>
   );
 };
