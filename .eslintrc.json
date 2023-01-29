@@ -32,6 +32,8 @@
     "react/jsx-curly-brace-presence": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "storybook/default-exports": "off",
+    "storybook/story-exports": "off"
   }
 }
