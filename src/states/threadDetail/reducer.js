@@ -33,6 +33,16 @@ const detailThreadReducer = (threadDetail = {}, action = {}) => {
           (id) => id !== action.payload.userId
         ),
       };
+    case ActionType.TOGGLE_NEUTRALVOTE_THREAD_DETAIL:
+      return {
+        ...threadDetail,
+        downVotesBy: threadDetail.downVotesBy.filter(
+          (id) => id !== action.payload.userId
+        ),
+        upVotesBy: threadDetail.upVotesBy.filter(
+          (id) => id !== action.payload.userId
+        ),
+      };
     case ActionType.TOGGLE_UPVOTE_COMMENT:
       return threadDetail.comments.map((comment) => {
         if (comment.id === action.payload.commentId) {

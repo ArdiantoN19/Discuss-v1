@@ -25,12 +25,12 @@ const ThreadItem = ({
 
   const handleOnClickUpVoteThread = (e) => {
     e.stopPropagation();
-    upVote({ id, isThreadDownVote });
+    upVote({ id, isThreadDownVote, isThreadUpVote });
   };
 
   const handleOnClickDownVoteThread = (e) => {
     e.stopPropagation();
-    downVote({ id, isThreadUpVote });
+    downVote({ id, isThreadUpVote, isThreadDownVote });
   };
 
   return (

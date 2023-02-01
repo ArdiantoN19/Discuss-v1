@@ -241,6 +241,25 @@ const api = (() => {
     }
   };
 
+  const neutralizeThreadVote = async (id) => {
+    const response = await _fetchWithAuth(
+      `${BASE_URL}/threads/${id}/neutral-vote`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const responseJson = await response.json();
+
+    const { status, message } = await responseJson;
+
+    if (status !== "success") {
+      throw new Error(message);
+    }
+  };
+
   const upVoteComment = async (threadId, commentId) => {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
@@ -277,6 +296,26 @@ const api = (() => {
     }
   };
 
+  const neutralizeVoteComment = async (threadId, commentId) => {
+    const response = await _fetchWithAuth(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const responseJson = await response.json();
+
+    const { status, message } = await responseJson;
+
+    if (status !== "success") {
+      throw new Error(message);
+    }
+  };
+
   return {
     putAccessToken,
     getAccessToken,
@@ -291,8 +330,10 @@ const api = (() => {
     getLeaderBoards,
     upVoteThread,
     downVoteThread,
+    neutralizeThreadVote,
     upVoteComment,
     downVoteComment,
+    neutralizeVoteComment,
   };
 })();
 
