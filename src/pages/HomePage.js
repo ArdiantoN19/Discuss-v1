@@ -24,12 +24,24 @@ const HomePage = () => {
     dispatch(asyncPopulateUsersAndThreads());
   }, [dispatch]);
 
-  const handleOnClickUpVoteThread = ({ id, isThreadDownVote }) => {
-    dispatch(asyncToggleUpVote({ threadId: id, isThreadDownVote }));
+  const handleOnClickUpVoteThread = ({
+    id,
+    isThreadDownVote,
+    isThreadUpVote,
+  }) => {
+    dispatch(
+      asyncToggleUpVote({ threadId: id, isThreadDownVote, isThreadUpVote })
+    );
   };
 
-  const handleOnClickDownVoteThread = ({ id, isThreadUpVote }) => {
-    dispatch(asyncToggleDownVote({ threadId: id, isThreadUpVote }));
+  const handleOnClickDownVoteThread = ({
+    id,
+    isThreadUpVote,
+    isThreadDownVote,
+  }) => {
+    dispatch(
+      asyncToggleDownVote({ threadId: id, isThreadUpVote, isThreadDownVote })
+    );
   };
 
   const threadList = threads.map((thread) => ({

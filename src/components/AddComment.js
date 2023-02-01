@@ -36,7 +36,6 @@ const AddComment = ({ addComment }) => {
       />
       <button
         type="submit"
-        // disabled={content !== ""}
         className="block w-full mx-auto font-semibold text-base bg-navy bg-opacity-90 p-2 text-light rounded hover:bg-opacity-100"
       >
         Kirim
